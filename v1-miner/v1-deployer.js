@@ -1,10 +1,11 @@
 /** @param {NS} ns */
 export async function main(ns) {
-  let svr = ns.args[0];
-  let maxRam = ns.args[1];
-  let weakRatio = ns.args[2];
-  let growRatio = ns.args[3];
-  let hackRatio = ns.args[4];
+  let curSvr = ns.args[0];
+  let targetSvr = ns.args[1];
+  let maxRam = ns.args[2];
+  let weakRatio = ns.args[3];
+  let growRatio = ns.args[4];
+  let hackRatio = ns.args[5];
   ns.print("-- Deploying v1-miner to " + svr + " with ram " + maxRam + ", W" + weakRatio + "G" + growRatio + "H" + hackRatio);
   let sum = 0;
   let mult = 0;
@@ -23,8 +24,8 @@ export async function main(ns) {
   let growwThreads = growRatio * mult;
   let hackThreads = hackRatio * mult;
   
-  ns.exec("/v1-miner/v1-weak.js", svr, {threads: weakThreads}, svr);
-  ns.exec("/v1-miner/v1-grow.js", svr, {threads: growwThreads}, svr);
-  ns.exec("/v1-miner/v1-hack.js", svr, {threads: hackThreads}, svr);
+  ns.exec("/v1-miner/v1-weak.js", curSvr, {threads: weakThreads}, targetSvr);
+  ns.exec("/v1-miner/v1-grow.js", curSvr, {threads: growwThreads}, targetSvr);
+  ns.exec("/v1-miner/v1-hack.js", curSvr, {threads: hackThreads}, targetSvr);
   
 }
