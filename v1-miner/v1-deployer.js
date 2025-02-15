@@ -6,7 +6,7 @@ export async function main(ns) {
   let weakRatio = ns.args[3];
   let growRatio = ns.args[4];
   let hackRatio = ns.args[5];
-  ns.print("-- Deploying v1-miner to " + svr + " with ram " + maxRam + ", W" + weakRatio + "G" + growRatio + "H" + hackRatio);
+  ns.print("-- Running v1-miner targetting " + targetSvr + " with ram " + maxRam + ", W" + weakRatio + "G" + growRatio + "H" + hackRatio);
   let sum = 0;
   let mult = 0;
 
